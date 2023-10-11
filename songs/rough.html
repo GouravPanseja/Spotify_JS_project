@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Time Update Example</title>
+</head>
+<body>
+
+<audio id="myAudio" controls>
+  <source src="1.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio>
+
+<script>
+  // Get the audio element
+  const audio = document.getElementById('myAudio');
+
+  // Add an event listener for the timeupdate event
+  audio.addEventListener('timeupdate', () => {
+    // Log the current playback time
+    console.log('Current time: ' + audio.currentTime);
+  });
+</script>
+
+</body>
+</html>
