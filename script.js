@@ -22,16 +22,16 @@ let theme = document.getElementById("theme");
 audio.pause(); // to pause the audio when script is loaded
 
 var songs = [
-  { songName: "song1", filePath: "songs/1.mp3", coverPath: "covers/1.jpg" ,duration:''},
-  { songName: "song2", filePath: "songs/2.mp3", coverPath: "covers/2.jpg" },
-  { songName: "song3", filePath: "songs/3.mp3", coverPath: "covers/3.jpg" },
-  { songName: "song4", filePath: "songs/4.mp3", coverPath: "covers/4.jpg" },
-  { songName: "song5", filePath: "songs/5.mp3", coverPath: "covers/5.jpg" },
-  { songName: "song6", filePath: "songs/6.mp3", coverPath: "covers/6.jpg" },
-  { songName: "song7", filePath: "songs/7.mp3", coverPath: "covers/7.jpg" },
-  { songName: "song8", filePath: "songs/8.mp3", coverPath: "covers/8.jpg" },
-  { songName: "song9", filePath: "songs/9.mp3", coverPath: "covers/9.jpg" },
-  { songName: "song10", filePath: "songs/10.mp3", coverPath: "covers/10.jpg" },
+  { songName: "Bones", filePath: "songs/1.mp3", coverPath: "covers/1.jpg" },
+  { songName: "Closer", filePath: "songs/2.mp3", coverPath: "covers/2.jpg" },
+  { songName: "Faded", filePath: "songs/3.mp3", coverPath: "covers/3.jpg" },
+  { songName: "Lily", filePath: "songs/4.mp3", coverPath: "covers/4.jpg" },
+  { songName: "Warriyo ", filePath: "songs/5.mp3", coverPath: "covers/5.jpg" },
+  { songName: "Cielo ", filePath: "songs/6.mp3", coverPath: "covers/6.jpg" },
+  { songName: "DEAF KEV ", filePath: "songs/7.mp3", coverPath: "covers/7.jpg" },
+  { songName: "Different", filePath: "songs/8.mp3", coverPath: "covers/8.jpg" },
+  { songName: "Janji", filePath: "songs/9.mp3", coverPath: "covers/9.jpg" },
+  { songName: "DEAF KEV ", filePath: "songs/10.mp3", coverPath: "covers/10.jpg" },
 ];
 
 // To add detials in the song rows
@@ -53,7 +53,7 @@ const makeAllPlay = () => {
 };
 
 //selecting all play icons on the song row and making it interactive
-Array.from(document.getElementsByClassName("songItemPlay")).forEach(
+Array.from(songItems).forEach(
   (element, idx) => {
     // to make this event called for all icons
 
@@ -63,8 +63,8 @@ Array.from(document.getElementsByClassName("songItemPlay")).forEach(
       if (audio.paused) {
         //song paused/not running
 
-        element.classList.remove("fa-circle-play");
-        element.classList.add("fa-circle-pause");
+        element.getElementsByClassName('songItemPlay')[0].classList.remove("fa-circle-play");
+        element.getElementsByClassName('songItemPlay')[0].classList.add("fa-circle-pause");
         audio.src = `songs/${idx + 1}.mp3`; // idx of i in its array is equal to idx of a song in its array
         audio.play();
         console.log("there was nothing running, a new song started");
@@ -76,18 +76,19 @@ Array.from(document.getElementsByClassName("songItemPlay")).forEach(
         songIndex = idx;
 
         songNameDisplay.innerHTML = songs[idx].songName;
-      } else {
+      }
+       else {
         //song is playing
 
         src = [...audio.src].reverse().slice(0, 11).reverse().join("");
         console.log(src);
 
-        if (src != `songs/${idx + 1}.mp3`) {
           //song clicked upon is not same as song playing
+        if (src != `songs/${idx + 1}.mp3`) {
 
           audio.src = `songs/${idx + 1}.mp3`;
-          element.classList.remove("fa-circle-play");
-          element.classList.add("fa-circle-pause");
+          element.getElementsByClassName('songItemPlay')[0].classList.remove("fa-circle-play");
+          element.getElementsByClassName('songItemPlay')[0].classList.add("fa-circle-pause");
           audio.play();
 
           gif.style.opacity = 1;
@@ -97,10 +98,11 @@ Array.from(document.getElementsByClassName("songItemPlay")).forEach(
 
           songNameDisplay.innerHTML = songs[idx].songName;
           songIndex = idx;
-        } else {
+        } 
+        else {
           audio.pause();
-          element.classList.remove("fa-circle-pause");
-          element.classList.add("fa-circle-play");
+          element.getElementsByClassName('songItemPlay')[0].classList.remove("fa-circle-pause");
+          element.getElementsByClassName('songItemPlay')[0].classList.add("fa-circle-play");
           console.log("clicked on same button,so song is turned off");
 
           gif.style.opacity = 0;
