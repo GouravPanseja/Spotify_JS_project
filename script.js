@@ -15,6 +15,8 @@ let songItems = Array.from(document.getElementsByClassName("songItem")); // Arra
 
 let prev = document.getElementById("previous");
 let next = document.getElementById("forward");
+let theme = document.getElementById("theme");
+
 
 // myProgressBar.value=0;     instead put in the value attribute in its html
 audio.pause(); // to pause the audio when script is loaded
@@ -180,3 +182,16 @@ next.addEventListener("click", () => {
 
   songNameDisplay.innerHTML = songs[songIndex].songName;
 });
+
+theme.addEventListener('click',()=>{
+
+  document.body.classList.toggle('dark-theme')
+  
+  if(document.body.classList.contains('dark-theme')){
+    theme.src='images/sun.png'
+    theme.style.background='black';
+  }
+  else{
+    theme.src='images/moon.png';
+  }
+})
